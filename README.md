@@ -43,5 +43,5 @@
 - after login or registration we take the (key (required))
 - and put it in the env file to used it 
 
-> Welcome to the Pixabay API documentation. Our API is a RESTful interface for searching and retrieving royalty-free images and videos released by Pixabay under the Content License.
-
+<!-- > Welcome to the Pixabay API documentation. Our API is a RESTful interface for searching and retrieving royalty-free images and videos released by Pixabay under the Content License.
+ -->
