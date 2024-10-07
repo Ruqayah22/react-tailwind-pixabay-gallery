@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# this  article introduces to Tailwind CSS by Blessing Krofegha
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Tailwind CSS article](https://www.smashingmagazine.com/2020/02/tailwindcss-react-project/)
 
-## Available Scripts
 
-In the project directory, you can run:
+~ npm i -D tailwindcss postcss-cli autoprefixer ~
 
-### `npm start`
+- postcss-cli : is a tool for transforming CSS with JavaScript plugins. is the command-line interface for PostCSS, which allows you to process your CSS files using PostCSS plugins (like Tailwind CSS or Autoprefixer). Tailwind CSS is a PostCSS plugin, and you need postcss-cli to compile your Tailwind styles.It gives you control to run PostCSS as part of your build process.
+- autoprefixer :  Autoprefixer is a PostCSS plugin that automatically adds vendor prefixes to your CSS to ensure compatibility across different browsers (like -webkit-, -moz-, etc.). It reads your CSS and ensures that properties requiring prefixes for cross-browser support are added automatically, improving browser compatibility.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+~ npx tailwind init tailwind.js --full ~
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ - it’s used to generate a tailwind config file, This command creates a tailwind.js in your project’s base directory; the file contains the configuration, such as our colors, themes, media queries, and so on. It’s a useful file that helps with predefined sets of properties which will aid the need to re-brand certain conventions or properties if the need arises.
 
-### `npm test`
+## Create a PostCSS configuration file in your base directory manually or using the command:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+~ touch postcss.config.js ~
 
-### `npm run build`
+- “PostCSS is a tool for transforming styles with JS plugins. These plugins can lint your CSS, support variables and mixins, transpile future CSS syntax, inline images, and more.”
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- It’s necessary to install Autoprefixer alongside Tailwind CSS because Autoprefixer usually tracks caniuse.com to see which CSS properties need to be prefixed. Hence, Tailwind CSS does not provide any vendor prefixing. If you’re curious as a cat in regards to PostCSS navigate to their documentation.   
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## add those to the package.json file (and change the start and build to ):
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ ` “scripts": {
+    "start": "npm run watch:css && react-scripts start",
+    "build": "npm run build:css && react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
+    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
+  },
+`
